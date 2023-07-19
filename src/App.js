@@ -1,8 +1,9 @@
+import logo from './logo.svg';
 import './App.css';
-import {Amplify, Auth} from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import aws_exports from './aws-exports';
+
 Amplify.configure(aws_exports);
 
 function App() {
