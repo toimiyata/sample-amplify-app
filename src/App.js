@@ -6,9 +6,8 @@ import { Header } from './ui-components';
 function App() {
   return (
     <div className="py-4">
-      <Header className="mb-4">
-        <p>※これは、UIコンポーネントを利用した表示です。</p>
-      </Header>
+      <Header className="mb-4" />
+      <p>※これは、UIコンポーネントを利用した表示です。</p>
     </div>
   );
 }
