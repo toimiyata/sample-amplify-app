@@ -5,54 +5,52 @@ import { Header } from './ui-components';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-function Hello(props){
+function AlertMessage(props) {
   return (
-    <div className={'alert alert-' + props.type}>
-      {props.message}
+    <div className='alert alert-primary'>
+      <h3>{props.title}</h3>
+      {props.msg}
     </div>
   )
 }
 
-function UseMessage(value) {
-  const data = [
-    ["おやすみ", "..."],
-    ["おはよう", "!"],
-    ["こんにちは", "さん"],
-    ["こんばんは", "くん"]
-  ]
-
-  const [msg, setMsg] = useState(value);
-  const setMsgs = (v) => {
-    if (v == "") {
-      setMsg("no message.")
-    } else {
-      const h = Math.floor(new Date().getHours() / 6)
-      setMsg(data[h][0] + v + data[h][1]);
-    }
-  }
-  return [msg, setMsgs];
+function BoxMessage(props) {
+  return (
+    <div className='card'>
+      <div className='card-header'>
+        {props.title}
+      </div>
+      <div className='card-body'>
+        {props.msg}
+      </div>
+    </div>
+  )
 }
 
 function App() {
-  const [msg, setMsg] = useState("");
-  const [message, setMessage] = UseMessage(msg);
-
+  const [flg, setFlg] = useState(false);
+ 
   const onChange = (event)=> {
-    setMsg(event.target.value);
+    setMsg(event.target.checked);
   }
-  useEffect (()=> {
-    setMessage(msg);
-  }, [msg]);
 
   return (
     <div className="py-4">
       <Header className="mb-4" />
       <p>※これは、UIコンポーネントを利用した表示です。</p>
-      <div className='mx-0 my-3 row'>
-        <input type="text" className='form-control col'
+      <div className='form-check'>
+        <input type="checkbox" className='form-check-input' id="check1"
           onChange={onChange}/>
+        <label className='form-check-label' htmlFor='check1'>
+          表示の切り替えチェックボックス
+        </label>
       </div>
-      <Hello message={message} type="primary" />
+      <hr />
+      {flg ?
+        <AlertMessage title="チェックはON!!" msg="チェックはONのメッセージ"/>
+      :
+        <BoxMessage title="チェックはOFF" msg="チェックはOFFのメッセージ"/>
+      }   
     </div>
   );
 }
