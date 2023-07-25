@@ -8,26 +8,16 @@ function App() {
     <div className="py-4">
       <Header className="mb-4" />
       <p>※これは、UIコンポーネントを利用した表示です。</p>
-      <Hello />
-      <Now />
+      <Hello message="サンプルのメッセージです" type="primary"/>
+      <Hello message="表示のタイプも変更できます" type="dark" />
     </div>
   );
 }
 
-function Hello() {
+function Hello(props) {
   return (
-    <p className='border border-primary p-3 my-3'>
-      こんにちは
-    </p>
-  )
-}
-
-function Now() {
-  return (
-    <p className='bg-secondary text-dark bg-opacity-25 p-3 my-3'>
-      現在は、{
-        new Date().getHours()
-      }時です。
+    <p className={"alert alert-" + props.type}>
+      {props.message}
     </p>
   )
 }
