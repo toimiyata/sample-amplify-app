@@ -8,18 +8,15 @@ function App() {
     <div className="py-4">
       <Header className="mb-4" />
       <p>※これは、UIコンポーネントを利用した表示です。</p>
-      <Hello message="サンプルのメッセージです" type="primary"/>
-      <Hello message="表示のタイプも変更できます" type="dark" />
+      <button className='btn btn-primary' onClick={onClick}>
+        Click me!
+      </button>
     </div>
   );
 }
 
-function Hello(props) {
-  return (
-    <p className={"alert alert-" + props.type}>
-      {props.message}
-    </p>
-  )
+function onClick() {
+  alert("クリックした！");
 }
 
 export default withAuthenticator(App);
