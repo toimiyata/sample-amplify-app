@@ -35,7 +35,7 @@ function App() {
         <input type="text" className='form-control col'
           onChange={onChange}/>
         <button className='btn btn-primary col-2'
-          onClick={onclick}/>
+          onClick={onClick}/>
       </div>
       <Hello message={msgs[0]} type="primary" />
       <Hello message={msgs[1]} type="dark" />
