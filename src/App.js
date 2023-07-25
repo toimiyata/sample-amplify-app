@@ -13,7 +13,7 @@ function Hello(props){
   )
 }
 
-function App() {
+function UseMessage(value) {
   const data = [
     ["おやすみ", "..."],
     ["おはよう", "!"],
@@ -21,24 +21,28 @@ function App() {
     ["こんばんは", "くん"]
   ]
 
-  const [input, setInput] = useState("")  
-  const [msg, setMsg] = useState(input);
-  const [msgs, setMsgs] = useState(msg);
-  
+  const [msg, setMsg] = useState(value);
+  const setMsgs = (v) => {
+    if (v == "") {
+      setMsg("no message.")
+    } else {
+      const h = Math.floor(new Date().getHours() / 6)
+      setMsg(data[h][0] + msg + data[h][1]);
+    }
+  }
+  return [msg, setMsgs];
+}
+
+function App() {
+  const [msg, setInput] = useState("");
+  const [message, setMessage] = UseMessage(msg);
+
   const onChange = (event)=> {
     setInput(event.target.value);
   }
-  const onClick = ()=> {
-    setMsg(input)
-  }
-  useEffect(() => {
-    if (msg == "") {
-      setMsgs("no message.")
-    } else {
-      const h = Math.floor(new Date().getHours() / 6)
-      setMsgs(data[h][0] + msg + data[h][1]);
-    }
-  }, [msg]);
+  useEffect = (()=> {
+    setMessage(msg)
+  }, [msg])
 
   return (
     <div className="py-4">
@@ -47,10 +51,8 @@ function App() {
       <div className='mx-0 my-3 row'>
         <input type="text" className='form-control col'
           onChange={onChange}/>
-        <button className='btn btn-primary col-2'
-          onClick={onClick}/>
       </div>
-      <Hello message={msgs} type="primary" />
+      <Hello message={message} type="primary" />
     </div>
   );
 }
