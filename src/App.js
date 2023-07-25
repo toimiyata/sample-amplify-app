@@ -16,7 +16,7 @@ function Messaege(props) {
     data = [<p>no data</p>]
   }
   return (
-    <div className={"alert alert-" + props.type}>
+    <div className={"alert alert-primary"}>
     <ul className='list-group'>
       <div className='text-center'>{first}</div>
       {data.map(value => (
