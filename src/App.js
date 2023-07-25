@@ -27,7 +27,7 @@ function UseMessage(value) {
       setMsg("no message.")
     } else {
       const h = Math.floor(new Date().getHours() / 6)
-      setMsg(data[h][0] + msg + data[h][1]);
+      setMsg(data[h][0] + v + data[h][1]);
     }
   }
   return [msg, setMsgs];
