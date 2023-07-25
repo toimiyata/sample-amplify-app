@@ -3,6 +3,7 @@ import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Header } from './ui-components';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function Hello(props){
   return (
@@ -13,19 +14,31 @@ function Hello(props){
 }
 
 function App() {
-  const [msg, setMsg] = useState("");
-  const [msgs, setMsgs] = useState([]);
+  const data = [
+    ["おやすみ", "..."],
+    ["おはよう", "!"],
+    ["こんにちは", "さん"],
+    ["こんばんは", "くん"]
+  ]
+
+  const [input, setInput] = useState("")  
+  const [msg, setMsg] = useState(input);
+  const [msgs, setMsgs] = useState(msg);
   
   const onChange = (event)=> {
-    setMsg(event.target.value);
+    setInput(event.target.value);
   }
-
   const onClick = ()=> {
-    setMsgs([
-      "Hello, " + msg + "!",
-      "こんにちは　" + msg + "!"
-    ]);
+    setMsg(input)
   }
+  useEffect(() => {
+    if (msg == "") {
+      setMsgs("no message.")
+    } else {
+      const h = Math.floor(new Date().getHours() / 6)
+      setMsgs(data[h][0] + msg + data[h][1]);
+    }
+  }, [msg]);
 
   return (
     <div className="py-4">
