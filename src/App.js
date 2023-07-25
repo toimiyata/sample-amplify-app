@@ -50,8 +50,7 @@ function App() {
         <button className='btn btn-primary col-2'
           onClick={onClick}/>
       </div>
-      <Hello message={msgs[0]} type="primary" />
-      <Hello message={msgs[1]} type="dark" />
+      <Hello message={msgs} type="primary" />
     </div>
   );
 }
