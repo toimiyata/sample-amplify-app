@@ -34,15 +34,15 @@ function UseMessage(value) {
 }
 
 function App() {
-  const [msg, setInput] = useState("");
+  const [msg, setMsg] = useState("");
   const [message, setMessage] = UseMessage(msg);
 
   const onChange = (event)=> {
-    setInput(event.target.value);
+    setMsg(event.target.value);
   }
   useEffect = (()=> {
-    setMessage(msg)
-  }, [msg])
+    setMessage(msg);
+  }, [msg]);
 
   return (
     <div className="py-4">
