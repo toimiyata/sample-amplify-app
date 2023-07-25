@@ -40,7 +40,7 @@ function App() {
   const onChange = (event)=> {
     setMsg(event.target.value);
   }
-  useEffect = (()=> {
+  useEffect (()=> {
     setMessage(msg);
   }, [msg]);
 
