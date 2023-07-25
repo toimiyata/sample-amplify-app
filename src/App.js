@@ -31,7 +31,7 @@ function App() {
   const [flg, setFlg] = useState(false);
  
   const onChange = (event)=> {
-    setMsg(event.target.checked);
+    setFlg(event.target.checked);
   }
 
   return (
