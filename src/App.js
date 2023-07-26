@@ -1,15 +1,32 @@
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
-import { Auth } from 'aws-amplify'
+import { useState } from 'react';
+import { Auth, DataStore } from 'aws-amplify'
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { Header, BoardComponentCollection } from './ui-components';
+import { Header } from './ui-components';
+import { Board } from './models'
 
-const content1 = <BoardComponentCollection />;
 const content2 = <p>タブ2のコンテンツ</p>;
 const content3 = <p>タブ3のコンテンツ</p>;
 const content4 = <p>タブ4のコンテンツ</p>;
 
 function App() {
+  const [content1, setContent1] = useState();
+
+  DataStore.query(Board).then(values => {
+    const data = []
+    for (let item of values) {
+      data.push(
+        <li key={item.id} className='list-group-item'>
+          {item.message} ({item.name})
+        </li>
+      )
+    }
+  setContent1(<ol className='my-3 list-group'>
+    {data}
+  </ol>)
+  });
+
   return (
     <div className="py-4">
       <Header className="mb-4" />
