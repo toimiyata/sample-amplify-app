@@ -23,9 +23,9 @@ function App() {
         />
       )
     }
-    setContent1(<ol className='my-3 list-group'>
+    setContent1(<div >
       {data}
-    </ol>)
+      </div>);
   });
 
   return (
