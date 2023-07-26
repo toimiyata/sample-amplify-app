@@ -3,7 +3,7 @@ import '@aws-amplify/ui-react/styles.css';
 import { useState } from 'react';
 import { Auth, DataStore } from 'aws-amplify'
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { Header } from './ui-components';
+import { Header, BoardComponent } from './ui-components';
 import { Board } from './models'
 
 const content2 = <p>タブ2のコンテンツ</p>;
@@ -17,14 +17,15 @@ function App() {
     const data = []
     for (let item of values) {
       data.push(
-        <li key={item.id} className='list-group-item'>
-          {item.message} ({item.name})
-        </li>
+        <BoardComponent
+          board={item}
+          key={item.id}
+        />
       )
     }
-  setContent1(<ol className='my-3 list-group'>
-    {data}
-  </ol>)
+    setContent1(<ol className='my-3 list-group'>
+      {data}
+    </ol>)
   });
 
   return (
