@@ -2,9 +2,9 @@ import './App.css';
 import '@aws-amplify/ui-react/styles.css';
 import { Auth } from 'aws-amplify'
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { Header } from './ui-components';
+import { Header, BoardComponentCollection } from './ui-components';
 
-const content1 = <p>タブ1のコンテンツ</p>;
+const content1 = <BoardComponentCollection />;
 const content2 = <p>タブ2のコンテンツ</p>;
 const content3 = <p>タブ3のコンテンツ</p>;
 const content4 = <p>タブ4のコンテンツ</p>;
