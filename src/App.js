@@ -36,15 +36,13 @@ function App() {
         <div id="tab1" className='my-2 tab-pane active'>
           { content1 }
         </div>
-      <div id="tab2" className='my-2 tab-pane'>
+        <div id="tab2" className='my-2 tab-pane'>
           { content2 }
         </div>
-      </div>
-      <div className='tab-content'>
         <div id="tab3" className='my-2 tab-pane'>
           { content3 }
         </div>
-      <div id="tab4" className='my-2 tab-pane'>
+        <div id="tab4" className='my-2 tab-pane'>
           { content4 }
         </div>
       </div>
